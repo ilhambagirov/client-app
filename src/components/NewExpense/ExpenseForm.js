@@ -46,13 +46,11 @@ export default function NewExpense(props) {
     event.preventDefault();
     let newExpense = {
       title: title,
-      amount: amount,
+      amount: +amount,
       date: new Date(date),
     };
     props.onSaveDataExpense(newExpense);
-    setTitle("");
-    setAmount("");
-    setDate("");
+    props.setFormMode(0)
   };
 
   return (
@@ -88,6 +86,7 @@ export default function NewExpense(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={()=>props.setFormMode(0)} type='button'>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
